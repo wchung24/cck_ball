@@ -10,59 +10,82 @@
 };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        l_s_brackets {
+            bindings = <&kp LEFT_PARENTHESIS>;
+            key-positions = <4 5>;
+        };
+
+        l_m_brackets {
+            bindings = <&kt LEFT_BRACKET>;
+            key-positions = <16 17>;
+        };
+
+        l_l_brackets {
+            bindings = <&kp LEFT_BRACE>;
+            key-positions = <28 29>;
+        };
+
+        r_s_brackets {
+            bindings = <&kp RIGHT_PARENTHESIS>;
+            key-positions = <7 6>;
+        };
+
+        r_m_brackets {
+            bindings = <&kp RIGHT_BRACKET>;
+            key-positions = <18 19>;
+        };
+
+        r_l_brackets {
+            bindings = <&kp RIGHT_BRACE>;
+            key-positions = <30 31>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         QWERTY {
             bindings = <
-&kp TAB           &kp Q         &kp W         &kp E       &kp R      &kp T   &kp Y   &kp U      &kp I      &kp O           &kp P           &kp BSLH
-&kp CAPSLOCK      &kp A         &lt 4 S       &kp D       &lt 3 F    &kp G   &kp H   &kp J      &kp K      &kp L           &kp SEMI        &kp SQT
-&kp LEFT_SHIFT    &kp Z         &kp X         &kp C       &kp V      &kp B   &kp N   &kp M      &kp COMMA  &kp DOT         &kp UP_ARROW    &kp FSLH
-&kp LEFT_CONTROL  &kp LEFT_WIN  &kp LEFT_ALT  &kp DELETE  &kp SPACE  &mo 1   &mo 2   &kp SPACE  &kp ENTER  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
+&kp ESCAPE        &kp Q         &kp W         &kp E         &kp R        &kp T         &kp Y      &kp U            &kp I          &kp O     &kp P      &kp BACKSPACE
+&kp TAB           &kp A         &kp S         &kp D         &kp F        &kp G         &kp H      &kp J            &kp K          &kp L     &kp SEMI   &kp SQT
+&kp LEFT_SHIFT    &kp Z         &kp X         &kp C         &kp V        &kp B         &kp N      &kp M            &kp COMMA      &kp DOT   &kp SLASH  &kp RIGHT_SHIFT
+&kp LEFT_CONTROL  &kp LEFT_WIN  &kp LEFT_ALT  &kp LEFT_WIN  &lt 1 SPACE  &kp LEFT_ALT  &kp ENTER  &lt 2 BACKSPACE  &kp RIGHT_ALT  &mkp MB1  &mkp MB2   &kp ENTER
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        F_layers {
+        num_layers {
             bindings = <
-&kp F12  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6     &kp F7     &kp F8  &kp F9  &kp F10  &kp F11
-&trans   &none   &none   &none   &none   &trans  &mkp LCLK  &mkp RCLK  &trans  &trans  &trans   &trans
-&trans   &trans  &trans  &trans  &trans  &none   &none      &none      &trans  &trans  &none    &trans
-&trans   &trans  &trans  &trans  &trans  &trans  &mkp LCLK  &mkp RCLK  &trans  &trans  &trans   &trans
+&kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5   &kp N6     &kp N7    &kp N8     &kp N9     &kp N0  &kp DEL
+&kp CAPS   &kp F1  &kp F2  &kp F3  &kp F4  &kp F5   &kp LEFT   &kp DOWN  &kp UP     &kp RIGHT  &none   &kp F11
+&trans     &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp HOME   &kp END   &kp PG_UP  &kp PG_DN  &none   &kp F12
+&trans     &trans  &trans  &trans  &trans  &trans   &mkp LCLK  &mo 3     &trans     &trans     &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        BT_layers {
+        symbo_layers {
             bindings = <
-&trans  &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans      &trans  &trans  &trans  &trans  &kp LEFT_WIN
-&trans  &bt BT_CLR_ALL  &trans        &trans        &trans        &trans        &trans      &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans        &bt BT_CLR    &trans        &trans        &bt BT_NXT  &trans  &trans  &trans  &trans  &trans
-&trans  &trans          &trans        &trans        &trans        &trans        &trans      &trans  &trans  &trans  &trans  &trans
+&none  &kp EXCL  &kp AT  &kp HASH  &kp DOLLAR  &kp PERCENT  &kp LS(CARET)  &kp LS(AMPS)  &kp LS(STAR)    &kp LS(LPAR)  &kp LS(RPAR)  &kp LEFT_WIN
+&none  &none     &none   &none     &none       &kp GRAVE    &kp MINUS      &kp EQUAL     &kp LBKT        &kp RBKT      &kp BSLH      &none
+&none  &none     &none   &none     &none       &kp TILDE    &kp UNDER      &kp PLUS      &kp LEFT_BRACE  &kp RBRC      &kp PIPE      &none
+&none  &none     &none   &none     &mo 3       &none        &none          &none         &none           &none         &none         &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
 
-        scroll-layers {
+        settings-layers {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
-
-        snipe-layers {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans        &trans        &trans        &trans        &bt BT_CLR    &bt BT_CLR_ALL  &trans  &trans  &trans  &trans  &trans
+&trans  &trans        &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans
+&trans  &trans        &trans        &trans        &trans        &trans        &trans          &trans  &trans  &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
