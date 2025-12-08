@@ -83,6 +83,17 @@
             bindings = <&kp BACKSPACE>;
             key-positions = <40 17>;
         };
+
+        DoubleDot {
+            bindings = <&sk CAPSLOCK>;
+            key-positions = <36 38>;
+        };
+
+        Colon {
+            bindings = <&kp COLON>;
+            key-positions = <29 29>;
+            timeout-ms = <150>;
+        };
     };
 
     keymap {
@@ -142,9 +153,10 @@
 
             sensor-bindings =
                 <&scroll_vertical_encoder>,
-                // Encoder 1: vertical scroll
+                // Encoder 1: vertical scroll,
                 <&scroll_horizontal_encoder>;
-  // Encoder 2: horizontal scroll
+
+            // Encoder 2: horizontal scroll
         };
     };
 };
