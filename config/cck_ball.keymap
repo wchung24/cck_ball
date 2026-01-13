@@ -98,10 +98,10 @@
 
         BT_layers {
             bindings = <
-&none  &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5 &none  &none  &none  &none  &none
-&none  &bt BT_CLR_ALL  &bt BT_CLR    &kp Y        &none        &bt BT_PRV   &none        &none  &none  &none  &none  &none
-&none  &none           &none         &none        &none        &bt BT_NXT   &none        &none  &none  &none  &none  &none
-&none  &none           &none         &none        &none        &none        &none        &none  &none  &none  &none  &none
+&bootloader  &none           &none         &none        &none        &none        &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5
+&none        &bt BT_CLR_ALL  &bt BT_CLR    &none        &none        &bt BT_PRV   &none           &none         &none        &none        &none        &none
+&none        &none           &none         &none        &none        &bt BT_NXT   &none           &none         &none        &none        &none        &none
+&none        &none           &none         &none        &none        &none        &none           &none         &none        &none        &none        &bootloader
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
