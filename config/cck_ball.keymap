@@ -44,18 +44,18 @@
     };
     
     behaviors {
-        td_par: tap_dance_0 {
+        td_colon: td_colon {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp SEMI>, <&kp COLON>;    
             
         };
-        td_quote: tap_dance_1 {
+        td_quote: td_quote {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp SQT>, <&kp AT>;
+            bindings = <&kp SQT>, <&kp DQT>, <&kp AT>;
             
         };
         paranthesis_dance: paranthesis_dance {
@@ -121,7 +121,7 @@
         QWERTY {
             bindings = <
 &kp TAB     &kp Q         &kp W         &kp E            &kp R      &kp T   &kp Y   &kp U      &kp I      &kp O           &kp P           &kp BSPC
-&kp ESC     &kp A         &kp S         &kp D            &kp F      &kp G   &kp H   &kp J      &kp K      &kp L           &kp SEMI        &kp SQT
+&kp ESC     &kp A         &kp S         &kp D            &kp F      &kp G   &kp H   &kp J      &kp K      &kp L           &td_colon       &td_quote
 &kp LSHIFT  &kp Z         &kp X         &kp C            &kp V      &kp B   &kp N   &kp M      &kp COMMA  &kp DOT         &kp UP_ARROW    &kp FSLH
 &kp LCTRL   &kp LWIN      &kp LALT      &kp NON_US_BSLH  &kp SPACE  &mo 1   &mo 2   &kp SPACE  &kp ENTER  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
             >;
