@@ -58,8 +58,63 @@
             bindings = <&kp SQT>, <&kp AT>;
             
         };
+        paranthesis_dance: paranthesis_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&ocpar>, <&kp LPAR>, <&kp RPAR>;
+        };
+        curl_dance: curl_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&occurl>, <&kp LBRC>, <&kp RBRC>;
+        };
+        squ_dance: squ_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&ocsqu>, <&kp LBKT>, <&kp RBKT>;
+        };
+        ang_dance: ang_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&ocang>, <&kp LT>, <&kp GT>;
+        };
     };
 
+    macros {
+        ocpar: ocpar {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LPAR &kp RPAR &kp LEFT_ARROW>
+                ;
+        };
+        occurl: occurl {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBRC &kp RBRC &kp LEFT_ARROW>
+                ;
+        };
+        ocsqu: ocsqu {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBKT &kp RBKT &kp LEFT_ARROW>
+                ;
+        };
+        ocang: ocang {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LT &kp GT &kp LEFT_ARROW>
+                ;
+        };
+    };
+    
     keymap {
         compatible = "zmk,keymap";
 
@@ -71,18 +126,18 @@
 &kp LCTRL   &kp LWIN      &kp LALT      &kp NON_US_BSLH  &kp SPACE  &mo 1   &mo 2   &kp SPACE  &kp ENTER  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_vertical_encoder>;
         };
 
         SYM_layers {
             bindings = <
-&kp GRAVE   &kp INS   &kp PG_UP      &kp HOME          &none   &none    &none      &kp N7      &kp N8   &kp N9   &none      &trans
-&none       &kp DEL   &kp PG_DN      &kp END           &none   &none    &kp EQUAL  &kp N4      &kp N5   &kp N6   &kp STAR   &none
-&kp LSHIFT  &kp PSCRN &kp C_AL_LOCK  &kp LC(LA(DEL))   &mo 3   &none    &kp MINUS  &kp N1      &kp N2   &kp N3   &kp FSLH   &none
-&kp LCTRL   &kp LGUI  &kp LALT       &kp NON_US_HASH   &none   &none    &mkp LCLK  &mkp RCLK  &none   &kp N0   &kp DOT    &kp K_CMENU
+&kp GRAVE   &kp INS   &kp PG_UP      &kp HOME          &ang_dance   &none        &paranthesis_dance     &kp N7      &kp N8   &kp N9   &none      &trans
+&none       &kp DEL   &kp PG_DN      &kp END           &squ_dance   &curl_dance  &kp EQUAL              &kp N4      &kp N5   &kp N6   &kp STAR   &none
+&kp LSHIFT  &kp PSCRN &kp C_AL_LOCK  &kp LC(LA(DEL))   &mo 3        &none        &kp MINUS              &kp N1      &kp N2   &kp N3   &kp FSLH   &none
+&kp LCTRL   &kp LGUI  &kp LALT       &kp NON_US_HASH   &none        &none        &mkp LCLK              &mkp RCLK  &none   &kp N0   &kp DOT    &kp K_CMENU
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_horizontal_encoder>;
         };
 
         FKP_layers {
