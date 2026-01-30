@@ -9,13 +9,12 @@
 #include <dt-bindings/zmk/pointing.h>
 
 &mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
-
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
 &msc {
-    acceleration-exponent = <0>;      // 0
-    time-to-max-speed-ms = <300>;       // 300
-    delay-ms = <0>;                   // 0
+    acceleration-exponent = <0>;
+    time-to-max-speed-ms = <300>;
+    delay-ms = <0>;
 };
 
 &mmv {
@@ -26,24 +25,18 @@
 
 &soft_off { hold-time-ms = <2000>; };
 
-/ {
-    // Vertical scroll encoder behavior
-
+ / {
     scroll_vertical_encoder: scroll_vertical_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-
         tap-ms = <100>;
     };
-
-    // Horizontal scroll encoder behavior
 
     scroll_horizontal_encoder: scroll_horizontal_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
         bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
-
         tap-ms = <100>;
     };
 
@@ -55,44 +48,54 @@
 
         Escape {
             bindings = <&kp ESC>;
-            key-positions = <0 1>;
+            key-positions = <0 1>;     // Q + W
             timeout-ms = <30>;
         };
 
         tab {
             bindings = <&kp TAB>;
-            key-positions = <12 13>;
+            key-positions = <12 13>;   // A + S
+            timeout-ms = <30>;
         };
 
         AtlTab {
             bindings = <&kp LA(TAB)>;
-            key-positions = <12 14>;
+            key-positions = <12 14>;   // A + D
+            timeout-ms = <30>;
         };
 
         RightClick {
             bindings = <&mkp RCLK>;
-            key-positions = <5 3>;
+            key-positions = <5 3>;     // (como lo tenías)
+            timeout-ms = <30>;
         };
 
         midClick {
             bindings = <&mkp MCLK>;
-            key-positions = <4 5>;
+            key-positions = <4 5>;     // (como lo tenías)
+            timeout-ms = <30>;
         };
 
         BackSpace {
-            bindings = <&kp BACKSPACE>;
-            key-positions = <40 17>;
+            bindings = <&kp BSPC>;
+            key-positions = <40 17>;   // (como lo tenías; si 40 te falla, lo movemos a izquierda)
+            timeout-ms = <30>;
         };
 
-        DoubleDot {
-            bindings = <&sk CAPSLOCK>;
-            key-positions = <36 38>;
-        };
+        // --- NUEVOS COMBOS (mano izquierda) ---
 
         Colon {
             bindings = <&kp COLON>;
-            key-positions = <29 29>;
-            timeout-ms = <150>;
+            // ',' (pos 17) + '.' (pos 29)  => ':'
+            key-positions = <17 29>;
+            timeout-ms = <30>;
+        };
+
+        SemiColon {
+            bindings = <&kp SEMI>;
+            // ',' (pos 17) + 'B' (pos 28) => ';'
+            key-positions = <17 28>;
+            timeout-ms = <30>;
         };
     };
 
@@ -103,8 +106,8 @@
             bindings = <
 &kp Q           &kp W         &kp E         &kp R         &kp T        &mkp LCLK    &trans     &kp Y         &kp U          &kp I     &kp O      &kp P
 &kp A           &kp S         &kp D         &kp F         &kp G        &kp COMMA    &trans     &kp H         &kp J          &kp K     &kp L      &kp SQT
-&kp Z           &kp X         &kp C         &kp V         &kp B        &kp DOT      &trans     &kp M         &kp COMMA      &kp DOT   &kp SLASH  &kp RIGHT_SHIFT
-&kp LEFT_SHIFT  &kp LEFT_WIN  &kp LEFT_ALT  &kp LEFT_WIN  &lt 1 SPACE  &lt 3 ENTER  &kp ENTER  &lt 2 DELETE  &kp RIGHT_ALT  &mkp MB1  &mkp MB2   &mo 4
+&kp Z           &kp X         &kp C         &kp V         &kp B        &kp DOT      &trans     &kp M         &kp COMMA      &kp DOT   &kp SLASH  &kp RSHFT
+&kp LSHFT       &kp LGUI      &kp LEFT_ALT  &kp LGUI      &lt 1 SPACE  &lt 3 ENTER  &kp ENTER  &lt 2 DEL      &kp RIGHT_ALT  &mkp MB1  &mkp MB2   &mo 4
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -112,10 +115,10 @@
 
         num_layers {
             bindings = <
-&kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp HOME        &kp UP_ARROW    &kp END          &kp N6     &kp N7    &kp N8     &kp N9     &kp N0  &kp DEL
-&kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp LEFT   &kp DOWN  &kp UP     &kp RIGHT  &none   &kp F11
-&kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans          &trans          &trans           &kp HOME   &kp END   &kp PG_UP  &kp PG_DN  &none   &kp F12
-&kp NUMBER_0  &kp DOT       &kp COMMA     &trans          &trans          &trans           &mkp LCLK  &mo 3     &trans     &trans     &trans  &trans
+&kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp HOME  &kp UP    &kp END     &kp N6     &kp N7    &kp N8     &kp N9     &kp N0  &kp DEL
+&kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp LEFT  &kp DOWN  &kp RIGHT   &kp LEFT   &kp DOWN  &kp UP     &kp RIGHT  &none   &kp F11
+&kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans    &trans    &trans      &kp HOME   &kp END   &kp PG_UP  &kp PG_DN  &none   &kp F12
+&kp NUMBER_0  &kp DOT       &kp COMMA     &trans    &trans    &trans      &mkp LCLK  &mo 3     &trans     &trans     &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -123,7 +126,7 @@
 
         symbo_layers {
             bindings = <
-&none  &kp EXCL  &kp AT  &kp HASH  &kp DOLLAR  &kp PERCENT  &kp LS(CARET)  &kp LS(AMPS)  &kp LS(STAR)    &kp LS(LPAR)  &kp LS(RPAR)  &kp LEFT_WIN
+&none  &kp EXCL  &kp AT  &kp HASH  &kp DOLLAR  &kp PERCENT  &kp LS(CARET)  &kp LS(AMPS)  &kp LS(STAR)    &kp LS(LPAR)  &kp LS(RPAR)  &kp LGUI
 &none  &none     &none   &none     &none       &kp GRAVE    &kp MINUS      &kp EQUAL     &kp LBKT        &kp RBKT      &kp BSLH      &none
 &none  &none     &none   &none     &none       &kp TILDE    &kp UNDER      &kp PLUS      &kp LEFT_BRACE  &kp RBRC      &kp PIPE      &none
 &none  &none     &none   &none     &mo 3       &none        &none          &none         &none           &none         &none         &none
@@ -153,10 +156,7 @@
 
             sensor-bindings =
                 <&scroll_vertical_encoder>,
-                // Encoder 1: vertical scroll,
                 <&scroll_horizontal_encoder>;
-
-            // Encoder 2: horizontal scroll
         };
     };
 };
