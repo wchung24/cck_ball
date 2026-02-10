@@ -70,5 +70,9 @@ jobs:
             2. Put your keyboard into bootloader mode
             3. Copy the `.uf2` file to the mounted drive
             4. The keyboard will automatically reboot with the new firmware
+
+            ---
+          generate_release_notes: true
+          append_body: true
           draft: false
           prerelease: false
