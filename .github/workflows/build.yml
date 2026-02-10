@@ -2,7 +2,6 @@ on:
   push:
     branches:
       - main
-      - zmk_v0.3
     tags:
       - "*-zmk_*"
   pull_request:
