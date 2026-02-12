@@ -1,0 +1,11 @@
+# Build artifacts
+build/
+*.uf2
+
+# ZMK workspace (only needed for native builds, not Docker)
+modules/
+tools/
+zephyr/
+bootloader/
+zmk/
+.west/
